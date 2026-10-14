@@ -1,4 +1,3 @@
-//# Retailer vs. Hotel Manager selector
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
@@ -8,7 +7,7 @@ export const RoleSelectionPage = () => {
   const { selectedRole, setSelectedRole } = useApp();
 
   return (
-    <div className="flex-1 flex flex-col justify-between p-6 bg-white">
+    <div className="flex-1 flex flex-col justify-between p-8 bg-white max-w-xl mx-auto w-full">
       <div>
         <button onClick={() => navigate(-1)} className="text-xs font-semibold text-[#005596] flex items-center gap-1 mb-6">
           ‹ Back
@@ -25,7 +24,6 @@ export const RoleSelectionPage = () => {
         <h1 className="text-2xl font-bold text-slate-800 mb-1">How do you connect?</h1>
         <p className="text-xs text-slate-500 mb-6">Choose the professional identity you represent.</p>
 
-        {/* Role Options Cards */}
         <div className="space-y-3">
           <label
             onClick={() => setSelectedRole('retailer')}

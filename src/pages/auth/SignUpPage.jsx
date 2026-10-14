@@ -1,4 +1,3 @@
-//# Demo registration with validation
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
@@ -24,7 +23,7 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between p-6 bg-white overflow-y-auto">
+    <div className="flex-1 flex flex-col justify-between p-8 bg-white max-w-xl mx-auto w-full overflow-y-auto">
       <div>
         <button onClick={() => navigate(-1)} className="text-xs font-semibold text-[#005596] flex items-center gap-1 mb-6">
           ‹ Back

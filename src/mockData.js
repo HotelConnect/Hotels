@@ -1,11 +1,11 @@
 export const INITIAL_USER = {
   name: 'Noha',
-  role: 'Retailer / Travel Agent', // or 'Hotel Agent / Manager'
-  roleType: 'retailer', // 'retailer' | 'hotel'
+  role: 'Retailer / Travel Agent',
+  roleType: 'retailer',
   title: 'Travel Agent',
   company: 'Your travel agency',
   location: '',
-  email: 'nohaomar55@gmail.com',
+  email: 'nohaomar507@gmail.com',
   phone: '',
   shareContact: false,
   dealsCount: 0,
@@ -18,7 +18,7 @@ export const INITIAL_POSTS = [
     company: 'Atlas Travel',
     role: 'Travel agency',
     roleType: 'retailer',
-    time: '5h ago',
+    time: '46m ago',
     type: 'RFQ',
     content: 'Looking for a reliable hotel partner for a corporate group in Hurghada. We need 20 twin rooms on half board, with a meeting room for one afternoon. Please share your best group rate and cancellation terms.',
     location: 'Hurghada',
@@ -35,7 +35,7 @@ export const INITIAL_POSTS = [
     role: 'Hotel',
     roleType: 'hotel',
     avatar: 'SM',
-    time: '6h ago',
+    time: '1h ago',
     type: 'HOTEL_UPDATE',
     content: "Planning your next Red Sea group trip? Our renovated family rooms and dedicated group desk are ready for the autumn season. Let's discuss agency allotments and flexible meal plans.",
     location: 'Sharm El Sheikh',
@@ -45,32 +45,143 @@ export const INITIAL_POSTS = [
   },
   {
     id: 3,
+    author: 'Lena Costa',
+    company: 'Horizon Journeys',
+    role: 'Travel agency',
+    roleType: 'retailer',
+    time: '3h ago',
+    type: 'RFQ',
+    content: 'Seeking 12 double rooms in central Cairo for a cultural tour. Breakfast included, easy coach access, and early luggage storage would be ideal. Open to hotel suggestions.',
+    location: 'Cairo',
+    rooms: '12 rooms',
+    dates: '18 Nov – 21 Nov',
+    likes: 6,
+    comments: 0,
+    userLiked: false,
+  },
+  {
+    id: 4,
     author: 'Daniel Chen',
     company: 'Onda City Hotel',
     role: 'Hotel',
     roleType: 'hotel',
     avatar: 'DC',
-    time: '9h ago',
+    time: '5h ago',
     type: 'HOTEL_UPDATE',
-    content: 'Special autumn package for corporate travelers available starting next month. Premium business lounges and high-speed Wi-Fi included.',
+    content: 'Our new corporate group rates are available for Cairo stays. Flexible room blocks, a business lounge, and airport transfers. Travel partners are welcome to get in touch for a tailored proposal.',
     location: 'Cairo',
-    likes: 5,
+    likes: 4,
+    comments: 0,
+    userLiked: false,
+  },
+  {
+    id: 5,
+    author: 'Omar Hassan',
+    company: 'Nile Gate Travel',
+    role: 'Travel agency',
+    roleType: 'retailer',
+    time: '7h ago',
+    type: 'RFQ',
+    content: 'A family group needs 16 rooms in Sharm El Sheikh. All-inclusive preferred, with connecting rooms where possible. Looking for a responsive resort sales team.',
+    location: 'Sharm El Sheikh',
+    rooms: '16 rooms',
+    dates: '25 Nov – 30 Nov',
+    likes: 9,
     comments: 0,
     userLiked: false,
   }
 ];
 
-export const INITIAL_CONVERSATIONS = [
+export const INITIAL_PROFILES = [
+  {
+    id: 'amina-rahal',
+    name: 'Amina Rahal',
+    title: 'Travel Sales Manager',
+    company: 'Atlas Travel',
+    role: 'Retailer / Travel Agent',
+    roleType: 'retailer',
+    location: 'Cairo, Egypt',
+    avatar: 'AR',
+    about: 'We create thoughtful travel experiences for corporate groups and families across Egypt and the Gulf. Looking for responsive hotel partners with flexible group rates.',
+    companyInfo: 'Independent travel agency · group & corporate travel',
+    dealsCount: 2,
+    deals: [
+      { title: '24-room corporate retreat - Red Sea', date: '18 Aug 2026 · Sample history' }
+    ]
+  },
+  {
+    id: 'marcus-lee',
+    name: 'Marcus Lee',
+    title: 'Hotel Sales Manager',
+    company: 'North & Palm Hotel',
+    role: 'Hotel Agent / Manager',
+    roleType: 'hotel',
+    location: 'Hurghada, Egypt',
+    avatar: 'ML',
+    about: 'Leading sales and group contracting for luxury Red Sea resorts.',
+    companyInfo: '5-star resort property · corporate & leisure groups',
+    dealsCount: 4,
+    deals: []
+  },
+  {
+    id: 'lena-costa',
+    name: 'Lena Costa',
+    title: 'Group Travel Consultant',
+    company: 'Horizon Journeys',
+    role: 'Retailer / Travel Agent',
+    roleType: 'retailer',
+    location: 'Alexandria, Egypt',
+    avatar: 'LC',
+    about: 'Specialized in cultural tours and heritage trips across Egypt.',
+    companyInfo: 'Boutique travel consultancy',
+    dealsCount: 1,
+    deals: []
+  },
   {
     id: 'sara-mansour',
-    contactName: 'Sara Mansour',
+    name: 'Sara Mansour',
+    title: 'Commercial Manager',
     company: 'The Cove Resort',
+    role: 'Hotel Agent / Manager',
+    roleType: 'hotel',
+    location: 'Sharm El Sheikh, Egypt',
     avatar: 'SM',
-    status: 'New opportunity',
-    relatedPostTitle: 'Sharm El Sheikh · Hotel update',
-    messages: [], // Array of { id, text, time, isUser }
+    about: 'Overseeing commercial partnerships and seasonal resort allotments.',
+    companyInfo: 'Resort & Spa property',
+    dealsCount: 3,
+    deals: []
+  },
+  {
+    id: 'omar-hassan',
+    name: 'Omar Hassan',
+    title: 'Agency Director',
+    company: 'Nile Gate Travel',
+    role: 'Retailer / Travel Agent',
+    roleType: 'retailer',
+    location: 'Cairo, Egypt',
+    avatar: 'OH',
+    about: 'Full-service agency handling corporate travel and large delegations.',
+    companyInfo: 'Established travel agency in Cairo',
+    dealsCount: 5,
+    deals: []
+  },
+  {
+    id: 'daniel-chen',
+    name: 'Daniel Chen',
+    title: 'Reservations & Sales Director',
+    company: 'Onda City Hotel',
+    role: 'Hotel Agent / Manager',
+    roleType: 'hotel',
+    location: 'Cairo, Egypt',
+    avatar: 'DC',
+    about: 'City hotel catering to business travelers and conferences.',
+    companyInfo: 'Business hotel downtown Cairo',
+    dealsCount: 2,
+    deals: []
   }
 ];
+
+export const INITIAL_CONVERSATIONS = [];
 
 export const INITIAL_EVENTS = [
   {
@@ -90,12 +201,7 @@ export const INITIAL_EVENTS = [
       { time: '12:00', title: 'Hotel–agency networking conversations', room: 'Partner lounge' },
       { time: '14:00', title: 'Building long-term commercial partnerships', room: 'Main hall' },
     ],
-    attendees: [
-      { name: 'Marcus Lee', role: 'Hotel Sales Manager · North & Palm Hotel', location: 'Hurghada, Egypt', avatar: 'ML' },
-      { name: 'Lena Costa', role: 'Group Travel Consultant · Horizon Journeys', location: 'Alexandria, Egypt', avatar: 'LC' },
-      { name: 'Omar Hassan', role: 'Agency Director · Nile Gate Travel', location: 'Cairo, Egypt', avatar: 'OH' },
-      { name: 'Sara Mansour', role: 'Commercial Manager · The Cove Resort', location: 'Sharm El Sheikh, Egypt', avatar: 'SM' },
-    ]
+    attendees: INITIAL_PROFILES
   },
   {
     id: 2,
@@ -107,14 +213,11 @@ export const INITIAL_EVENTS = [
     location: 'Cairo',
     venue: 'Grand Palace Hotel, Cairo',
     organizer: 'Middle East Hospitality Network',
-    description: 'Explore innovations in guest retention and boutique agency partnerships across regional destinations.',
+    description: 'A focused industry gathering on thoughtful guest experiences, local sourcing, and innovative hospitality concepts.',
     agenda: [
       { time: '10:00', title: 'Opening Keynote', room: 'Grand Ballroom' },
       { time: '11:30', title: 'Digital Transformation in Hospitality', room: 'Room B' },
     ],
-    attendees: [
-      { name: 'Omar Hassan', role: 'Agency Director · Nile Gate Travel', location: 'Cairo, Egypt', avatar: 'OH' },
-      { name: 'Sara Mansour', role: 'Commercial Manager · The Cove Resort', location: 'Sharm El Sheikh, Egypt', avatar: 'SM' },
-    ]
+    attendees: INITIAL_PROFILES.slice(0, 3)
   }
 ];

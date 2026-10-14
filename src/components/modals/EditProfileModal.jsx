@@ -1,4 +1,3 @@
-//# Modal dialog to edit user profile
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 
@@ -17,11 +16,11 @@ export const EditProfileModal = () => {
   };
 
   return (
-    <div className="absolute inset-0 bg-black/50 z-50 flex items-end justify-center">
-      <div className="bg-white w-full rounded-t-3xl p-5 space-y-4">
-        <div className="flex justify-between items-center border-b border-slate-100 pb-2">
+    <div className="absolute inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white w-full max-w-lg rounded-3xl p-6 space-y-4 shadow-2xl">
+        <div className="flex justify-between items-center border-b border-slate-100 pb-3">
           <h2 className="font-bold text-slate-800 text-base">Edit Profile</h2>
-          <button onClick={() => setIsEditProfileModalOpen(false)} className="text-slate-400 text-lg">✕</button>
+          <button onClick={() => setIsEditProfileModalOpen(false)} className="text-slate-400 text-lg hover:text-slate-600">✕</button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3 text-xs">
@@ -31,7 +30,7 @@ export const EditProfileModal = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#005596]"
             />
           </div>
 
@@ -41,7 +40,7 @@ export const EditProfileModal = () => {
               type="text"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#005596]"
             />
           </div>
 
@@ -52,13 +51,13 @@ export const EditProfileModal = () => {
               placeholder="e.g. Cairo, Egypt"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-slate-200"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#005596]"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 bg-[#005596] text-white font-bold rounded-xl text-xs shadow-md mt-2"
+            className="w-full py-3 bg-[#005596] hover:bg-[#004478] text-white font-bold rounded-xl text-xs shadow-md mt-2 transition-all"
           >
             Save changes
           </button>

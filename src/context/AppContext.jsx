@@ -1,24 +1,23 @@
-// Global State Management (User session, Posts, Chats, Events, Filters)
-
 import React, { createContext, useContext, useState } from 'react';
-import { INITIAL_USER, INITIAL_POSTS, INITIAL_CONVERSATIONS, INITIAL_EVENTS } from '../mockData';
+import { INITIAL_USER, INITIAL_POSTS, INITIAL_CONVERSATIONS, INITIAL_EVENTS, INITIAL_PROFILES } from '../mockData';
 
 const AppContext = createContext(null);
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(INITIAL_USER);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [selectedRole, setSelectedRole] = useState('retailer'); // 'retailer' | 'hotel'
+  const [selectedRole, setSelectedRole] = useState('retailer');
   const [posts, setPosts] = useState(INITIAL_POSTS);
+  const [profiles] = useState(INITIAL_PROFILES);
   const [conversations, setConversations] = useState(INITIAL_CONVERSATIONS);
   const [events] = useState(INITIAL_EVENTS);
   const [activeConversationId, setActiveConversationId] = useState(null);
+  const [selectedProfileId, setSelectedProfileId] = useState(null);
   
   // Modals state
   const [isRfqModalOpen, setIsRfqModalOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  // Authentication Actions
   const login = (email, password) => {
     setUser((prev) => ({ ...prev, email: email || prev.email }));
     setIsAuthenticated(true);
@@ -26,6 +25,37 @@ export const AppProvider = ({ children }) => {
 
   const logout = () => {
     setIsAuthenticated(false);
+  };
+
+  const demoLoginAs = (roleKey) => {
+    if (roleKey === 'retailer') {
+      setUser({
+        name: 'Amina Rahal',
+        role: 'Retailer / Travel Agent',
+        roleType: 'retailer',
+        title: 'Travel Sales Manager',
+        company: 'Atlas Travel',
+        location: 'Cairo, Egypt',
+        email: 'amina@atlastravel.com',
+        phone: '+20 100 555 0192',
+        shareContact: true,
+        dealsCount: 2,
+      });
+    } else {
+      setUser({
+        name: 'Marcus Lee',
+        role: 'Hotel Agent / Manager',
+        roleType: 'hotel',
+        title: 'Hotel Sales Manager',
+        company: 'North & Palm Hotel',
+        location: 'Hurghada, Egypt',
+        email: 'marcus@northpalm.com',
+        phone: '+20 122 444 8810',
+        shareContact: true,
+        dealsCount: 4,
+      });
+    }
+    setIsAuthenticated(true);
   };
 
   const register = (firstName, email, password) => {
@@ -37,7 +67,7 @@ export const AppProvider = ({ children }) => {
       title: selectedRole === 'retailer' ? 'Travel Agent' : 'Hotel Representative',
       company: selectedRole === 'retailer' ? 'Your travel agency' : 'Your hotel property',
       location: '',
-      email: email || 'user@company.com',
+      email: email || 'nohaomar507@gmail.com',
       phone: '',
       shareContact: false,
       dealsCount: 0,
@@ -45,7 +75,6 @@ export const AppProvider = ({ children }) => {
     setIsAuthenticated(true);
   };
 
-  // Post Actions
   const createRfq = (rfqData) => {
     const newPost = {
       id: Date.now(),
@@ -79,7 +108,25 @@ export const AppProvider = ({ children }) => {
     }));
   };
 
-  // Messaging Actions
+  const startOrCreateConversation = (contactName, company, avatar, relatedPostTitle = null) => {
+    const convId = contactName.toLowerCase().replace(/\s+/g, '-');
+    const existing = conversations.find(c => c.id === convId);
+    if (!existing) {
+      const newConv = {
+        id: convId,
+        contactName,
+        company,
+        avatar: avatar || contactName.split(' ').map(n => n[0]).join(''),
+        status: 'New opportunity',
+        relatedPostTitle,
+        messages: [],
+      };
+      setConversations([newConv, ...conversations]);
+    }
+    setActiveConversationId(convId);
+    return convId;
+  };
+
   const sendMessage = (conversationId, text) => {
     if (!text.trim()) return;
     const newMessage = {
@@ -116,15 +163,20 @@ export const AppProvider = ({ children }) => {
       isAuthenticated,
       login,
       logout,
+      demoLoginAs,
       register,
       selectedRole,
       setSelectedRole,
       posts,
+      profiles,
       createRfq,
       toggleLike,
       conversations,
       activeConversationId,
       setActiveConversationId,
+      selectedProfileId,
+      setSelectedProfileId,
+      startOrCreateConversation,
       sendMessage,
       updateOpportunityStatus,
       events,
